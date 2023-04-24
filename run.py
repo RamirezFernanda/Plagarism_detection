@@ -1,7 +1,8 @@
-from check_plagarism import similarities, suspicious_files, original_files
+from check_plagarism import suspicious_files, original_files, read_documents
 
 
 if __name__ == '__main__':
+    similarities = read_documents()
     # The results are printed out for each pair of documents
     for i, plagiarized_file in enumerate(suspicious_files):
         for j, original_file in enumerate(original_files):
