@@ -12,6 +12,7 @@ nltk.download('punkt')
 # Two directories are specified
 # For the original documents
 original_route = "../Detection_Files/Originals"
+
 # For the suspicious documents
 suspicious_route = "../Detection_Files/Suspicious"
 # The list of original and suspicious files is obtained

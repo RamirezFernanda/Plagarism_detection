@@ -1,6 +1,6 @@
 from check_plagarism import read_documents, suspicious_files, original_files
 from sklearn.metrics import roc_auc_score
-import os  # For file management
+
 
 if __name__ == '__main__':
     # Get the similarity matrix between all suspicious and original documents
