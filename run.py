@@ -1,4 +1,4 @@
-from AUC.check_plagarism import suspicious_files, original_files, read_documents
+from Algorithms.check_plagarism import suspicious_files, original_files, read_documents
 
 
 if __name__ == '__main__':
