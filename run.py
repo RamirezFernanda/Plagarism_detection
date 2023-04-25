@@ -5,8 +5,8 @@ if __name__ == '__main__':
     # Get the similarity matrix between all suspicious and original documents
     similarities = read_documents()
 
-    true_labels = [1,1,0,0,1,1,0,0,0,0,0,0,0,0,1]  # manually define the true labels (0 for original, 1 for suspicious)
-    predictions = similarities.flatten()[:len(true_labels)]  # store the similarities as the model's predictions and adjust the length to match the number of true labels
+    true_labels = [1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]  # Manually define the true labels (0 for original, 1 for suspicious)
+    predictions = similarities.flatten()[:len(true_labels)]  # Store the similarities as the model's predictions and adjust the length to match the number of true labels
 
     # Calculate and print the AUC
     auc = roc_auc_score(true_labels, predictions)
@@ -18,4 +18,4 @@ if __name__ == '__main__':
             if similarities[i, j] > 0.30:
                 # The output includes the name of the original and suspicious document, as well as the similarity score
                 print(f"¡Alerta! Se ha detectado plagio en el documento {plagiarized_file}. \nLa similitud de coseno entre el documento original {original_file} y el documento plagiado {plagiarized_file} es: {similarities[i,j]*100:.2f}%")
-                print("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")          
+                print("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
