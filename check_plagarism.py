@@ -14,13 +14,12 @@ nltk.download('punkt')
 original_route = "Plagarism_detection/Detection_Files/Originals"
 # For the suspicious documents
 suspicious_route = "Plagarism_detection/Detection_Files/Suspicious"
+
 # The list of original and suspicious files is obtained
 original_files = os.listdir(original_route)
 suspicious_files = os.listdir(suspicious_route)
 
 # Function that takes two documents as input and returns their cosine similarity score
-
-
 def compare_files(doc1, doc2, ngram_range):
   # Vectorizer extracts all possible 3-grams (sequences of 3 consecutive words) from the text
     tfidf_vectorizer = TfidfVectorizer(ngram_range=(
@@ -48,3 +47,4 @@ def read_documents():
             similarities[i, j] = compare_files(
                 original_text, plagiarized_text, 3)
     return similarities
+
