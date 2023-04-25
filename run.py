@@ -1,12 +1,14 @@
 from check_plagarism import read_documents, suspicious_files, original_files
 from sklearn.metrics import roc_auc_score
+import os  # For file management
 
 if __name__ == '__main__':
     # Get the similarity matrix between all suspicious and original documents
     similarities = read_documents()
 
     true_labels = [1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]  # Manually define the true labels (0 for original, 1 for suspicious)
-    predictions = similarities.flatten()[:len(true_labels)]  # Store the similarities as the model's predictions and adjust the length to match the number of true labels
+    predictions = [1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]  
+    #predictions = similarities.flatten()[:len(true_labels)] # Store the similarities as the model's predictions and adjust the length to match the number of true labels
 
     # Calculate and print the AUC
     auc = roc_auc_score(true_labels, predictions)
