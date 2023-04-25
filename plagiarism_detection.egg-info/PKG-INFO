@@ -1,0 +1,15 @@
+Metadata-Version: 1.2
+Name: plagiarism-detection
+Version: 1.0.0
+Summary: The project presented below seeks to detect plagiarism through the similarity of cosine and n-grams in the comparison of files with possible plagiarism and their corresponding original documents
+Home-page: https://github.com/RamirezFernanda/Plagarism_detection
+Author: Maria Fernanda Ramirez Barragan,Melissa Garduño Ruiz
+License: MIT
+Description: UNKNOWN
+Keywords: plagiarism detection program
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Plagiarism Detection
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.8

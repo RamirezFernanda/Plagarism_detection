@@ -1,0 +1,6 @@
+README.md
+setup.py
+plagiarism_detection.egg-info/PKG-INFO
+plagiarism_detection.egg-info/SOURCES.txt
+plagiarism_detection.egg-info/dependency_links.txt
+plagiarism_detection.egg-info/top_level.txt

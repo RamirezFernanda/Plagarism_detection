@@ -26,6 +26,6 @@ open a new terminal, then, execute the command:
 ## Add your own documents
 
 To execute the program with your own original and suspicious files, you must add the documents
-in the folder named **Detection_Files**, there, you will find **Originals**,**Plag**, and **Suspicious** folders.
+in the folder named **Detection_Files**, there, you will find **Originals**, **Plag**, and **Suspicious** folders.
 Add the original documents to **Originals** folder and the suspicious ones to **Suspicious** folder, and then
 execute '_run.py_' file.
