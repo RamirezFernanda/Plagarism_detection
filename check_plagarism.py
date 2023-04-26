@@ -11,9 +11,9 @@ nltk.download('punkt')
 
 # Two directories are specified
 # For the original documents
-original_route = "Plagarism_detection/Detection_Files/Originals"
+original_route = "./Detection_Files/Originals"
 # For the suspicious documents
-suspicious_route = "Plagarism_detection/Detection_Files/Suspicious"
+suspicious_route = "./Detection_Files/Suspicious"
 
 # The list of original and suspicious files is obtained
 original_files = os.listdir(original_route)
