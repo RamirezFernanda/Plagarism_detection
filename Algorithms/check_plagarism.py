@@ -1,3 +1,9 @@
+'''
+Authors: Maria Fernanda Ramirez Barragan,
+         Melissa Garduño Ruiz
+Creation date: 23/04/23  dd/mm/yy
+'''
+
 # The necessary libraries are imported
 import os  # For file management
 import numpy as np  # For numerical computations

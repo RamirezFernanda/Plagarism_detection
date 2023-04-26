@@ -1,3 +1,9 @@
+'''
+Authors: Maria Fernanda Ramirez Barragan,
+         Melissa Garduño Ruiz
+Creation date: 23/04/23  dd/mm/yy
+'''
+
 from sklearn.metrics.pairwise import cosine_similarity
 import os  # For file management
 import numpy as np  # For numerical computations

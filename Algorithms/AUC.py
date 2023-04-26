@@ -1,3 +1,8 @@
+'''
+Authors: Maria Fernanda Ramirez Barragan
+Creation date: 24/04/23  dd/mm/yy
+'''
+
 from sklearn.metrics import roc_auc_score
 from check_plagarism import read_documents, suspicious_files, original_files
 
