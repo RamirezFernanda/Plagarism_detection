@@ -14,6 +14,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import nltk
 # Pre-trained sentence tokenizer to split text into individual sentences
 nltk.download('punkt')
+nltk.download('wordnet')
 
 # Two directories are specified
 # For the original documents
@@ -27,13 +28,25 @@ suspicious_files = os.listdir(suspicious_route)
 
 # Function that takes two documents as input and returns their cosine similarity score
 
+def preprocess_document(doc, lemmatize=False, stem=False):
+    tokens = word_tokenize(doc.lower())
+    if lemmatize:
+        lemmatizer = WordNetLemmatizer()
+        tokens = [lemmatizer.lemmatize(token) for token in tokens]
+    elif stem:
+        stemmer = PorterStemmer()
+        tokens = [stemmer.stem(token) for token in tokens]
+    return " ".join(tokens)
 
-def compare_files(doc1, doc2, ngram_range):
-  # Vectorizer extracts all possible 3-grams (sequences of 3 consecutive words) from the text
+def compare_files(doc1, doc2, ngram_range, lemmatize=False, stem=False):
+    # Preprocess documents by tokenizing, lemmatizing or stemming their words, and joining them back into strings
+    doc1_preprocessed = preprocess_document(doc1, lemmatize=lemmatize, stem=stem)
+    doc2_preprocessed = preprocess_document(doc2, lemmatize=lemmatize, stem=stem)
+    # Vectorizer extracts all possible n-grams (sequences of n consecutive words) from the text
     tfidf_vectorizer = TfidfVectorizer(ngram_range=(
         ngram_range, ngram_range), tokenizer=word_tokenize)  # Generate document vectors
-    tfidf_doc1 = tfidf_vectorizer.fit_transform([doc1])
-    tfidf_doc2 = tfidf_vectorizer.transform([doc2])
+    tfidf_doc1 = tfidf_vectorizer.fit_transform([doc1_preprocessed])
+    tfidf_doc2 = tfidf_vectorizer.transform([doc2_preprocessed])
     return cosine_similarity(tfidf_doc1, tfidf_doc2)[0][0]
 
 

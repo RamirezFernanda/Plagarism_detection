@@ -4,7 +4,7 @@ Authors: Maria Fernanda Ramirez Barragan,
 Creation date: 23/04/23  dd/mm/yy
 '''
 
-from check_plagarism import read_documents, suspicious_files, original_files
+from Algorithms.check_plagarism import read_documents, suspicious_files, original_files
 from sklearn.metrics import roc_auc_score
 
 
