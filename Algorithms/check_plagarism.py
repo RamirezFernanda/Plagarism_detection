@@ -9,6 +9,7 @@ import os  # For file management
 import numpy as np  # For numerical computations
 from joblib import Parallel, delayed  # For parallel processing
 from nltk.tokenize import word_tokenize  # For natural language processing
+from nltk.stem import WordNetLemmatizer, PorterStemmer  # For lemmatization and stemming
 from sklearn.feature_extraction.text import TfidfVectorizer  # For machine learning
 from sklearn.metrics.pairwise import cosine_similarity
 import nltk
@@ -38,7 +39,7 @@ def preprocess_document(doc, lemmatize=False, stem=False):
         tokens = [stemmer.stem(token) for token in tokens]
     return " ".join(tokens)
 
-def compare_files(doc1, doc2, ngram_range, lemmatize=False, stem=False):
+def compare_files(doc1, doc2, ngram_range, lemmatize=False, stem=True):
     # Preprocess documents by tokenizing, lemmatizing or stemming their words, and joining them back into strings
     doc1_preprocessed = preprocess_document(doc1, lemmatize=lemmatize, stem=stem)
     doc2_preprocessed = preprocess_document(doc2, lemmatize=lemmatize, stem=stem)
