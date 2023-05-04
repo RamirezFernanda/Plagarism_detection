@@ -2,12 +2,12 @@
 Authors: Maria Fernanda Ramirez Barragan
 Creation date: 24/04/23  dd/mm/yy
 '''
-
+import os
 from sklearn.metrics import roc_auc_score
-from check_plagarism import read_documents, suspicious_files, original_files
+from check_plagarism import read_documents, suspicious_files, original_files, suspicious_route
 
 # Manually define the labels names
-labels_name = ['FID-01', 'FID-02', 'FID-03', 'FID-04', 'FID-05', 'FID-06', 'FID-07', 'FID-08', 'FID-09', 'FID-10', 'FID-11', 'FID-12', 'FID-13', 'FID-14','FID-15'] 
+labels_name = os.listdir(suspicious_route)
 # Manually define the true labels (0 for original, 1 for suspicious)
 true_labels = [1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1]  
 
@@ -23,7 +23,7 @@ def check_files():
                 # If so, append plagiarized_file name to plag_docs_pred
                 if plagiarized_file.split('.')[0] not in plag_docs_pred:
                     # If plagiarized_file name is already in plag_docs_pred, it doesn't append it twice
-                    plag_docs_pred.append(plagiarized_file.split('.')[0])
+                    plag_docs_pred.append(plagiarized_file)
     return plag_docs_pred
 
 #Function that gets the predictions given plag_docs_pred of "check_files()"
@@ -42,6 +42,7 @@ def get_predictions():
     return predictions
 
 predictions = get_predictions()
+
 # Give AUC score
 auc = roc_auc_score(true_labels, predictions)
 print('------------------------------------------')
