@@ -29,20 +29,17 @@ suspicious_files = os.listdir(suspicious_route)
 
 # Function that takes two documents as input and returns their cosine similarity score
 
-def preprocess_document(doc, lemmatize=False, stem=False):
+def preprocess_document(doc, stem=False):
     tokens = word_tokenize(doc.lower())
-    if lemmatize:
-        lemmatizer = WordNetLemmatizer()
-        tokens = [lemmatizer.lemmatize(token) for token in tokens]
-    elif stem:
+    if stem:
         stemmer = PorterStemmer()
         tokens = [stemmer.stem(token) for token in tokens]
     return " ".join(tokens)
 
-def compare_files(doc1, doc2, ngram_range, lemmatize=False, stem=True):
+def compare_files(doc1, doc2, ngram_range, stem=True):
     # Preprocess documents by tokenizing, lemmatizing or stemming their words, and joining them back into strings
-    doc1_preprocessed = preprocess_document(doc1, lemmatize=lemmatize, stem=stem)
-    doc2_preprocessed = preprocess_document(doc2, lemmatize=lemmatize, stem=stem)
+    doc1_preprocessed = preprocess_document(doc1, stem=stem)
+    doc2_preprocessed = preprocess_document(doc2, stem=stem)
     # Vectorizer extracts all possible n-grams (sequences of n consecutive words) from the text
     tfidf_vectorizer = TfidfVectorizer(ngram_range=(
         ngram_range, ngram_range), tokenizer=word_tokenize)  # Generate document vectors
