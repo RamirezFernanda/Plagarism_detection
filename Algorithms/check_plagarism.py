@@ -29,23 +29,23 @@ suspicious_files = os.listdir(suspicious_route)
 
 # Function that takes two documents as input and returns their cosine similarity score
 
-def preprocess_document(doc, stem=False):
+def stemming(doc, stem=False):
     tokens = word_tokenize(doc.lower())
     if stem:
         stemmer = PorterStemmer()
         tokens = [stemmer.stem(token) for token in tokens]
     return " ".join(tokens)
 
-def compare_files(doc1, doc2, ngram_range, stem=True):
-    # Preprocess documents by tokenizing, lemmatizing or stemming their words, and joining them back into strings
-    doc1_preprocessed = preprocess_document(doc1, stem=stem)
-    doc2_preprocessed = preprocess_document(doc2, stem=stem)
+def compare_files(doc1, doc2, ngram, stem=True):
+#  Preprocess documents by tokenizing and stemming their words, and joining them back into strings
+    doc1_stem = stemming(doc1, stem=stem)
+    doc2_stem = stemming(doc2, stem=stem)
     # Vectorizer extracts all possible n-grams (sequences of n consecutive words) from the text
-    tfidf_vectorizer = TfidfVectorizer(ngram_range=(
-        ngram_range, ngram_range), tokenizer=word_tokenize)  # Generate document vectors
-    tfidf_doc1 = tfidf_vectorizer.fit_transform([doc1_preprocessed])
-    tfidf_doc2 = tfidf_vectorizer.transform([doc2_preprocessed])
-    return cosine_similarity(tfidf_doc1, tfidf_doc2)[0][0]
+    vectorizer = TfidfVectorizer(ngram_range=(
+        ngram, ngram), tokenizer=word_tokenize)  # Generate document vectors
+    vectorize_doc1 = vectorizer.fit_transform([doc1_stem])
+    vectorize_doc2 = vectorizer.transform([doc2_stem])
+    return cosine_similarity(vectorize_doc1, vectorize_doc2)[0][0]
 
 
 def read_documents():
