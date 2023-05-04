@@ -6,7 +6,7 @@ import os
 from sklearn.metrics import roc_auc_score
 from check_plagarism import read_documents, suspicious_files, original_files, suspicious_route
 
-# Manually define the labels names
+# The route of the suspicious documents is taken to define the labels names
 labels_name = os.listdir(suspicious_route)
 # Manually define the true labels (0 for original, 1 for suspicious)
 true_labels = [1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1]  
