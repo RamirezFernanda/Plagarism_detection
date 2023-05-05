@@ -39,18 +39,19 @@ def stemming(doc, stem=False):
 # The stemmed tokens are then joined together into a string with spaces between them and returned as the output of the function
     return " ".join(tokens)
 
-# Takes in two documents 
+# Function that takes two documents, ngrams and default stem=True
 def compare_files(doc1, doc2, ngram, stem=True):
 
-# And applies stemming to them if stem is set to True
+
+# Applies stemming to the documents if stem is set to True
     doc1_stem = stemming(doc1, stem=stem)
     doc2_stem = stemming(doc2, stem=stem)
- # Generate document vectors using TfidfVectorizer with ngram   
+ # Generate document vectors using TfidfVectorizer with ngrams  
     vectorizer = TfidfVectorizer(ngram_range=(
-        ngram, ngram), tokenizer=word_tokenize) 
+        ngram, ngram), tokenizer=word_tokenize)
     vectorize_doc1 = vectorizer.fit_transform([doc1_stem])
     vectorize_doc2 = vectorizer.transform([doc2_stem])
-#  Returns the similarity score
+#  Returns the cosine similarity score
     return cosine_similarity(vectorize_doc1, vectorize_doc2)[0][0]
 
 

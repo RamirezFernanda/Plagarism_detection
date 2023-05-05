@@ -3,7 +3,7 @@ Authors: Maria Fernanda Ramirez Barragan,
          Melissa Garduño Ruiz
 Creation date: 23/04/23  dd/mm/yy
 '''
-# Imports specific functions and variables from the module "check_plagiarism" located in the "Algorithms" directory
+# Imports specific functions and variables from "check_plagiarism" located in the "Algorithms" directory
 from Algorithms.check_plagarism import read_documents, suspicious_files, original_files, train_svm_model, predict_plagiarism
 
 
