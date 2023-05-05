@@ -17,5 +17,5 @@ if __name__ == '__main__':
     for i, plagiarized_file in enumerate(suspicious_files):
         for j, original_file in enumerate(original_files):
             if predictions[i, j] == 1:
-                print(f"¡Alerta! Se ha detectado plagio en el documento {plagiarized_file}. \nLa similitud de coseno entre el documento original {original_file} y el documento plagiado {plagiarized_file} es: {similarities[i,j]*100:.2f}%")
+                print(f"Se ha detectado plagio en el documento {plagiarized_file}. \nLa similitud de coseno entre el documento original {original_file} y el documento plagiado {plagiarized_file} es: {similarities[i,j]*100:.2f}%")
                 print('--------------------------------------------------------------------------------------------------------')
