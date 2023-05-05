@@ -2,9 +2,9 @@
 Authors: Maria Fernanda Ramirez Barragan
 Creation date: 24/04/23  dd/mm/yy
 '''
-import os
-from sklearn.metrics import roc_auc_score
-from check_plagarism import read_documents, suspicious_files, original_files, suspicious_route
+import os # Imported for operating system related functionalities.
+from sklearn.metrics import roc_auc_score # (ROC) area under the curve (AUC) score
+from check_plagarism import read_documents, suspicious_files, original_files, suspicious_route # Functions are imported from the check_plagarism
 
 # The route of the suspicious documents is taken to define the labels names
 labels_name = os.listdir(suspicious_route)
